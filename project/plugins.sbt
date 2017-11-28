@@ -1,14 +1,11 @@
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.18")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.9")
 
 // Web plugins
-addSbtPlugin("com.typesafe.sbt" % "sbt-coffeescript" % "1.0.0")
-addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.0")
-addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.4")
-addSbtPlugin("com.typesafe.sbt" % "sbt-rjs" % "1.0.8")
-addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.1")
-addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.0")
-addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
+addSbtPlugin("com.typesafe.sbt" % "sbt-jshint" % "1.0.3")
+addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.0")
+addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.2")
+addSbtPlugin("net.ground5hark.sbt" % "sbt-concat" % "0.1.9")
 
 // Play enhancer - this automatically generates getters/setters for public fields
 // and rewrites accessors of these fields to use the getters/setters. Remove this
@@ -16,3 +13,9 @@ addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
 // basis using disablePlugins(PlayEnhancer) in your build.sbt
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-enhancer" % "1.1.0")
 
+// Override sbt-play-enhancer use of javassist 3.18.2-GA, which fixes JASSIST-220
+// https://github.com/jboss-javassist/javassist/pull/10
+libraryDependencies += "org.javassist" % "javassist" % "3.20.0-GA"
+
+//For version info in the build
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.6.1")
